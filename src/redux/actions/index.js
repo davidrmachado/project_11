@@ -24,6 +24,13 @@ export const addEntry = (expenses) => ({
   expenses,
 });
 
+export const REMOVE_ENTRY = 'REMOVE_ENTRY';
+
+export const removeEntry = (expense) => ({
+  type: REMOVE_ENTRY,
+  expense,
+});
+
 export const getCurrencyList = () => async (dispatch) => {
   const currencyList = Object.keys(await getCurrencies());
   currencyList.splice(1, 1); // Método splice usado para remover o item da posição 1 (array.splice(index, quantidade))

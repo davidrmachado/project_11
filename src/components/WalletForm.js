@@ -40,13 +40,14 @@ class WalletForm extends React.Component {
     event.preventDefault();
     await this.getCurrencyObject();
     let { id } = this.state;
-    const { dispatchEntry } = this.props;
+    const { dispatchEntry, expenses } = this.props;
     dispatchEntry(this.state);
     this.setState({
       id: id += 1,
       value: '',
       description: '',
     });
+    console.log(expenses);
   }
 
   render() {
@@ -136,15 +137,15 @@ WalletForm.propTypes = {
   dispatchCurrencies: PropTypes.func,
 }.isRequired;
 
+const mapStateToProps = (state) => ({
+  currencies: state.wallet.currencies,
+  expenses: state.wallet.expenses,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   dispatchCurrencies: () => dispatch(getCurrencyList()),
   dispatchEntry: (entry) => dispatch(addEntry(entry)),
 }
 );
-
-const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
-  expenses: state.wallet.expenses,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

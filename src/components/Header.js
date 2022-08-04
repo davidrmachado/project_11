@@ -20,7 +20,7 @@ class Header extends React.Component {
           { email }
         </p>
         <p data-testid="total-field">
-          { expenses.length === 0 ? '0' : this.totalValue() }
+          { expenses.length === 0 ? '0.00' : this.totalValue() }
         </p>
         <p data-testid="header-currency-field">BRL</p>
       </header>
