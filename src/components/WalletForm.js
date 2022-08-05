@@ -40,14 +40,13 @@ class WalletForm extends React.Component {
     event.preventDefault();
     await this.getCurrencyObject();
     let { id } = this.state;
-    const { dispatchEntry, expenses } = this.props;
+    const { dispatchEntry } = this.props;
     dispatchEntry(this.state);
     this.setState({
       id: id += 1,
       value: '',
       description: '',
     });
-    console.log(expenses);
   }
 
   render() {
